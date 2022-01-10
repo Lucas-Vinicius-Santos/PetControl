@@ -1,26 +1,39 @@
 <div class="container">
   <div class="content">
-    <img src="../../../assets/black-cat.svg" alt="illustration" />
-    <form>
+    <div class="background"></div>
+    <form (ngSubmit)="onSubmit()">
       <div class="inputWrapper">
         <div class="inputs">
           <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
-          <input class="input" type="text" />
+          <input
+            name="title"
+            [(ngModel)]="outlay.title"
+            class="input"
+            type="text"
+            placeholder="Com o que você gastou?"
+          />
         </div>
         <div class="inputs">
           <fa-icon class="inputIcons" [icon]="faPaw"></fa-icon>
-          <select class="inputs select" name="select">
-            <option *ngFor="let option of opitions" value="{{ option }}">
-              {{ option }}
+          <select class="inputs select" name="pet" [(ngModel)]="outlay.pet">
+            <option selected value="default">Com qual pet?</option>
+            <option *ngFor="let pet of pets" [ngValue]="pet">
+              {{ pet.name }}
             </option>
           </select>
         </div>
         <div class="inputs">
           <fa-icon class="inputIcons" [icon]="faDollarSign"></fa-icon>
-          <input class="input" type="number" />
+          <input
+            name="price"
+            [(ngModel)]="outlay.price"
+            class="input"
+            type="number"
+            placeholder="Quanto você gastou? (R$)"
+          />
         </div>
       </div>
-      <button disabled type="submit">Registrar</button>
+      <button type="submit">Registrar</button>
     </form>
   </div>
 </div>

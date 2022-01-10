@@ -2,8 +2,10 @@
   padding: 0 2rem;
 
   .content {
+    position: relative;
     max-width: 1120px;
     margin: -2rem auto;
+    height: 600px;
 
     color: var(--white);
 
@@ -12,12 +14,15 @@
     background: var(--blue-400);
     width: 100%;
     border-radius: 14px;
+    overflow: hidden;
 
     font-weight: bold;
     font-size: 2rem;
 
-    img {
-      max-height: 600px;
+    .background {
+      background: url("../../../assets/form-outlay.jpeg") no-repeat center;
+      background-size: cover;
+      flex: 1;
     }
 
     form {
@@ -62,6 +67,11 @@
             background: transparent;
             border: none;
             outline: 0;
+
+            &::placeholder {
+              color: var(--black);
+              opacity: 0.6;
+            }
           }
           .select {
             width: 100%;
@@ -69,6 +79,16 @@
             border: 0;
             outline: 0;
             padding: 1rem;
+            margin-right: 1rem;
+
+            font-size: 1.5rem;
+            color: var(--black);
+            opacity: 0.6;
+            text-transform: capitalize;
+
+            option {
+              text-transform: capitalize;
+            }
           }
           & + .inputs {
             margin-top: 2rem;
@@ -80,7 +100,6 @@
         width: 50%;
         height: 5rem;
         font-size: 1.5rem;
-        // align-self: center;
         border: 0;
         background: var(--orange-500);
         color: var(--white);
@@ -97,9 +116,13 @@
   @media (max-width: 720px) {
     padding: 0 1rem;
 
-    div {
+    .content {
       padding: 2rem;
       font-size: 1.5rem;
+
+      .background {
+        display: none;
+      }
     }
   }
 }

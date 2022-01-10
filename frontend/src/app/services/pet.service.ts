@@ -2,30 +2,23 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
-import { Outlay, OutlayRequest } from '../models/outlay.model';
 import { Pet } from '../models/pet.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OutlayService {
-  private baseUrl = 'http://localhost:3333/outlay';
+export class PetService {
+  private baseUrl = 'http://localhost:3333/pet';
 
   constructor(private http: HttpClient) {}
 
-  getAllOutlays(): Observable<Outlay[]> {
-    return this.http.get<Outlay[]>(this.baseUrl);
+  getAllPets(): Observable<Pet[]> {
+    return this.http.get<Pet[]>(this.baseUrl);
   }
 
-  createOutlay(outlay: OutlayRequest): /* Observable<Outlay | Error> */ void {
-    const outlayReq = {
-      title: outlay.title,
-      price: outlay.price ? outlay.price * 100 : 0,
-      pet_id: typeof outlay.pet === 'string' ? 0 : outlay.pet.id,
-    };
-
-    this.http.post<Outlay>(this.baseUrl, outlayReq).subscribe();
-  }
+  // createProduct(product: Product): Observable<Product> {
+  //   return this.http.post<Product>(this.baseUrl, product);
+  // }
 
   // getProductById(id: string): Observable<Product> {
   //   const url = `${this.baseUrl}/${id}`;

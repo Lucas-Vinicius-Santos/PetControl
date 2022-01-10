@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Outlay } from 'src/app/models/outlay.model';
-import { OutlayService } from 'src/app/services/Outlay.service';
+import { OutlayService } from 'src/app/services/outlay.service';
 
 @Component({
   selector: 'app-cost-history',
