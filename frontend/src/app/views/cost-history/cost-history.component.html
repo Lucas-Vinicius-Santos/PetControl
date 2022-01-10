@@ -5,6 +5,7 @@
         <th>Gasto com</th>
         <th>Pet</th>
         <th>Valor</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -13,6 +14,14 @@
         <td>{{ outlay.pet.name }}</td>
         <td>
           {{ outlay.price / 100 | currency: "BRL" }}
+        </td>
+        <td>
+          <a routerLink="/update-cost/{{ outlay.id }}" class="updateButton">
+            <fa-icon class="updateIcon icon" [icon]="faEdit"></fa-icon>
+          </a>
+          <a routerLink="/delete-cost/{{ outlay.id }}" class="deleteButton">
+            <fa-icon class="deleteIcon icon" [icon]="faTrash"></fa-icon>
+          </a>
         </td>
       </tr>
     </tbody>

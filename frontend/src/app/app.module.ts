@@ -11,6 +11,8 @@ import { CostHistoryComponent } from './views/cost-history/cost-history.componen
 import { LandingComponent } from './views/landing/landing.component';
 import { CreateCostComponent } from './views/create-cost/create-cost.component';
 import { CreatePetComponent } from './views/create-pet/create-pet.component';
+import { DeleteCostComponent } from './views/delete-cost/delete-cost.component';
+import { UpdateCostComponent } from './views/update-cost/update-cost.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { CreatePetComponent } from './views/create-pet/create-pet.component';
     LandingComponent,
     CreateCostComponent,
     CreatePetComponent,
+    DeleteCostComponent,
+    UpdateCostComponent,
   ],
   imports: [
     AppRoutingModule,

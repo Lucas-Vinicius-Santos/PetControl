@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+
 import { Outlay } from 'src/app/models/outlay.model';
 import { OutlayService } from 'src/app/services/outlay.service';
 
@@ -8,6 +12,9 @@ import { OutlayService } from 'src/app/services/outlay.service';
   styleUrls: ['./cost-history.component.scss'],
 })
 export class CostHistoryComponent implements OnInit {
+  faTrash = faTrash;
+  faEdit = faEdit;
+
   public outlays: Outlay[] = [];
 
   formatePrice(price: number): string {
