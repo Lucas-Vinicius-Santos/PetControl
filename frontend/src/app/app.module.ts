@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CostHistoryComponent } from './views/cost-history/cost-history.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { CreateCostComponent } from './views/create-cost/create-cost.component';
+import { CreatePetComponent } from './views/create-pet/create-pet.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CreateCostComponent } from './views/create-cost/create-cost.component';
     CostHistoryComponent,
     LandingComponent,
     CreateCostComponent,
+    CreatePetComponent,
   ],
   imports: [
     AppRoutingModule,

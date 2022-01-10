@@ -16,9 +16,32 @@ export class PetService {
     return this.http.get<Pet[]>(this.baseUrl);
   }
 
-  // createProduct(product: Product): Observable<Product> {
-  //   return this.http.post<Product>(this.baseUrl, product);
-  // }
+  createPet(pet: Pet): Pet | Error {
+    let error = {
+      name: '',
+      breed: '',
+    };
+
+    const petReq: Pet = {
+      name: pet.name
+        ? pet.name.trimStart().trimEnd()
+        : (error.name = 'nome invalido'),
+      breed: pet.breed
+        ? pet.breed.trimStart().trimEnd()
+        : (error.breed = 'espécie invalida'),
+    };
+
+    if (error.name !== '') {
+      return new Error(error.name);
+    }
+    if (error.breed !== '') {
+      return new Error(error.name);
+    }
+
+    this.http.post<Pet>(this.baseUrl, petReq).subscribe();
+
+    return petReq;
+  }
 
   // getProductById(id: string): Observable<Product> {
   //   const url = `${this.baseUrl}/${id}`;
