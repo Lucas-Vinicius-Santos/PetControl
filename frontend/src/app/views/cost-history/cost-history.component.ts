@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Outlay } from 'src/app/models/outlay.model';
+import { OutlayService } from 'src/app/services/Outlay.service';
 
 @Component({
   selector: 'app-cost-history',
@@ -6,29 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cost-history.component.scss'],
 })
 export class CostHistoryComponent implements OnInit {
-  products = [
-    {
-      title: 'Brinquedo',
-      price: this.formatePrice(3.99),
-      pet: {
-        name: 'Rex',
-      },
-    },
-    {
-      title: 'ração',
-      price: this.formatePrice(23.99),
-      pet: {
-        name: 'Nina',
-      },
-    },
-    {
-      title: 'Areia',
-      price: this.formatePrice(13.99),
-      pet: {
-        name: 'Nina',
-      },
-    },
-  ];
+  public outlays: Outlay[] = [];
 
   formatePrice(price: number): string {
     return new Intl.NumberFormat('pt-BR', {
@@ -37,5 +17,11 @@ export class CostHistoryComponent implements OnInit {
     }).format(price);
   }
 
-  ngOnInit(): void {}
+  constructor(private outlayService: OutlayService) {}
+
+  ngOnInit(): void {
+    this.outlayService.getAllOutlays().subscribe((outlays) => {
+      this.outlays = outlays;
+    });
+  }
 }

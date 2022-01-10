@@ -8,11 +8,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.title }}</td>
-        <td>{{ product.pet.name }}</td>
+      <tr *ngFor="let outlay of outlays">
+        <td>{{ outlay.title }}</td>
+        <td>{{ outlay.pet.name }}</td>
         <td>
-          {{ product.price }}
+          {{ outlay.price / 100 | currency: "BRL" }}
         </td>
       </tr>
     </tbody>
