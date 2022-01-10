@@ -11,6 +11,7 @@ routes.put("/pet/:id", new PetController().updatePet);
 routes.delete("/pet/:id", new PetController().deletePet);
 
 routes.get("/outlay", new OutlayController().getAllOutlays);
+routes.get("/outlay/:id", new OutlayController().getOutlay);
 routes.post("/outlay", new OutlayController().createOutlay);
 routes.put("/outlay/:id", new OutlayController().updateOutlay);
 routes.delete("/outlay/:id", new OutlayController().deleteOutlay);

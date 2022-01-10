@@ -10,6 +10,19 @@ export class OutlayController {
     return res.json(result);
   }
 
+  async getOutlay(req: Request, res: Response) {
+    const { id } = req.params;
+    const service = new OutlayService();
+
+    const result = await service.getOutlayById(id);
+
+    if (result instanceof Error) {
+      return res.status(400).json(result.message);
+    }
+
+    return res.json(result);
+  }
+
   async createOutlay(req: Request, res: Response) {
     const { title, price, pet_id } = req.body;
 

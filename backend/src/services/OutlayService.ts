@@ -20,6 +20,20 @@ export class OutlayService {
     return outlays;
   }
 
+  async getOutlayById(id: string): Promise<Outlay | Error> {
+    const repo = getRepository(Outlay);
+
+    const outlay = await repo.findOne(id, {
+      relations: ["pet"],
+    });
+
+    if (!outlay) {
+      return new Error("Outlay does not exist");
+    }
+
+    return outlay;
+  }
+
   async createOutlay({
     title,
     price,
