@@ -1,0 +1,50 @@
+.container {
+  padding: 0 2rem;
+
+  table {
+    max-width: 1120px;
+    margin: -2rem auto;
+
+    font-size: 1.4rem;
+
+    overflow: hidden;
+    color: var(--black);
+    border-collapse: collapse;
+    text-align: left;
+    border-spacing: 0;
+    background: var(--blue-400);
+    width: 100%;
+    border-radius: 14px;
+    th {
+      padding: 2rem 4rem;
+
+      color: var(--white);
+      border-bottom: 2px solid var(--blue-600-t);
+    }
+    tr {
+      td {
+        text-transform: capitalize;
+        padding: 1rem 4rem;
+      }
+      &:nth-child(even) {
+        background-color: var(--blue-600-t);
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    padding: 0 1rem;
+
+    table {
+      text-align: center;
+      th {
+        padding: 1rem 1rem;
+      }
+      tr {
+        td {
+          padding: 1rem 1rem;
+        }
+      }
+    }
+  }
+}

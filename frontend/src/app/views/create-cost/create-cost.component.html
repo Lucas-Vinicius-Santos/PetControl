@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="content">
+    <img src="../../../assets/black-cat.svg" alt="illustration" />
+    <form>
+      <div class="inputWrapper">
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
+          <input class="input" type="text" />
+        </div>
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faPaw"></fa-icon>
+          <select class="inputs select" name="select">
+            <option *ngFor="let option of opitions" value="{{ option }}">
+              {{ option }}
+            </option>
+          </select>
+        </div>
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faDollarSign"></fa-icon>
+          <input class="input" type="number" />
+        </div>
+      </div>
+      <button disabled type="submit">Registrar</button>
+    </form>
+  </div>
+</div>
