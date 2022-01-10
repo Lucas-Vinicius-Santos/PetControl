@@ -1,0 +1,25 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Espécie</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of pets">
+        <td>{{ pet.name }}</td>
+        <td>{{ pet.breed }}</td>
+        <td>
+          <a routerLink="/update-pet/{{ pet.id }}" class="updateButton">
+            <fa-icon class="updateIcon icon" [icon]="faEdit"></fa-icon>
+          </a>
+          <a routerLink="/delete-pet/{{ pet.id }}" class="deleteButton">
+            <fa-icon class="deleteIcon icon" [icon]="faTrash"></fa-icon>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LandingComponent } from './views/landing/landing.component';
+
 import { CostHistoryComponent } from './views/cost-history/cost-history.component';
 import { CreateCostComponent } from './views/create-cost/create-cost.component';
-import { CreatePetComponent } from './views/create-pet/create-pet.component';
 import { UpdateCostComponent } from './views/update-cost/update-cost.component';
 import { DeleteCostComponent } from './views/delete-cost/delete-cost.component';
+
+import { PetHistoryComponent } from './views/pet-history/pet-history.component';
+import { CreatePetComponent } from './views/create-pet/create-pet.component';
+import { UpdatePetComponent } from './views/update-pet/update-pet.component';
+import { DeletePetComponent } from './views/delete-pet/delete-pet.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -16,7 +21,10 @@ const routes: Routes = [
   { path: 'update-cost/:id', component: UpdateCostComponent },
   { path: 'delete-cost/:id', component: DeleteCostComponent },
 
+  { path: 'pet-history', component: PetHistoryComponent },
   { path: 'new-pet', component: CreatePetComponent },
+  { path: 'update-pet/:id', component: UpdatePetComponent },
+  { path: 'delete-pet/:id', component: DeletePetComponent },
 ];
 
 @NgModule({
