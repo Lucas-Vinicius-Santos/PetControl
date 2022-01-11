@@ -16,6 +16,18 @@ export class PetService {
     return pets;
   }
 
+  async getPetById(id: string): Promise<Pet | Error> {
+    const repo = getRepository(Pet);
+
+    const pet = await repo.findOne(id);
+
+    if (!pet) {
+      return new Error("Pet does not exist");
+    }
+
+    return pet;
+  }
+
   async createPet({ name, breed }: PetRequest): Promise<Pet | Error> {
     const repo = getRepository(Pet);
 

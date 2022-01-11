@@ -83,6 +83,7 @@ export class OutlayService {
 
     return outlay;
   }
+
   async deleteOutlay(id: string) {
     const repo = getRepository(Outlay);
 

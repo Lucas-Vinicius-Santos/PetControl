@@ -10,6 +10,19 @@ export class PetController {
     return res.json(result);
   }
 
+  async getPet(req: Request, res: Response) {
+    const { id } = req.params;
+    const service = new PetService();
+
+    const result = await service.getPetById(id);
+
+    if (result instanceof Error) {
+      return res.status(400).json(result.message);
+    }
+
+    return res.json(result);
+  }
+
   async createPet(req: Request, res: Response) {
     const { name, breed } = req.body;
 
