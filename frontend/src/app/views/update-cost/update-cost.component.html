@@ -1,1 +1,48 @@
-<p>update-cost works!</p>
+<div class="container">
+  <div class="content">
+    <div class="background"></div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="inputWrapper">
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
+          <input
+            name="title"
+            maxlength="24"
+            name="title"
+            [(ngModel)]="outlay.title"
+            class="input"
+            type="text"
+          />
+        </div>
+
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faPaw"></fa-icon>
+          <select class="inputs select" name="pet" value="outlay.pet">
+            <option *ngFor="let pet of pets" [ngValue]="pet">
+              {{ pet.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faDollarSign"></fa-icon>
+          <input
+            mask="separator.2"
+            [thousandSeparator]="'.'"
+            [decimalMarker]="','"
+            [dropSpecialCharacters]="true"
+            prefix="R$ "
+            name="price"
+            [(ngModel)]="outlay.price"
+            class="input"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="buttonContent">
+        <button (click)="cancel()" type="button">Cancelar</button>
+        <button [disabled]="isDisabled" type="submit">Atualizar</button>
+      </div>
+    </form>
+  </div>
+</div>

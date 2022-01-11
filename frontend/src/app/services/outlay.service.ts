@@ -55,10 +55,17 @@ export class OutlayService {
     return;
   }
 
-  // updateProduct(product: Product): Observable<Product> {
-  //   const url = `${this.baseUrl}/${product.id}`;
-  //   return this.http.put<Product>(url, product);
-  // }
+  updateOutlay(outlay: Outlay) {
+    const url = `${this.baseUrl}/${outlay.id}`;
+
+    this.http
+      .put<Outlay>(url, {
+        title: outlay.title,
+        price: outlay.price,
+        pet_id: outlay.pet_id,
+      })
+      .subscribe();
+  }
 
   deleteOutlay(id: string) {
     const url = `${this.baseUrl}/${id}`;
