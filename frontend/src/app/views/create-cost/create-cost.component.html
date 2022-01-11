@@ -25,10 +25,14 @@
         <div class="inputs">
           <fa-icon class="inputIcons" [icon]="faDollarSign"></fa-icon>
           <input
+            mask="separator.2"
+            [thousandSeparator]="'.'"
+            [decimalMarker]="','"
+            [dropSpecialCharacters]="true"
             name="price"
             [(ngModel)]="outlay.price"
             class="input"
-            type="number"
+            type="text"
             placeholder="Quanto você gastou? (R$)"
           />
         </div>

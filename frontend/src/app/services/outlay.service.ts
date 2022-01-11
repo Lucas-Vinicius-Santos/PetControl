@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { Outlay, OutlayRequest } from '../models/outlay.model';
-import { Pet } from '../models/pet.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,28 +16,52 @@ export class OutlayService {
     return this.http.get<Outlay[]>(this.baseUrl);
   }
 
-  createOutlay(outlay: OutlayRequest): /* Observable<Outlay | Error> */ void {
-    const outlayReq = {
-      title: outlay.title,
-      price: outlay.price ? outlay.price * 100 : 0,
-      pet_id: typeof outlay.pet === 'string' ? 0 : outlay.pet.id,
-    };
-
-    this.http.post<Outlay>(this.baseUrl, outlayReq).subscribe();
+  getOutlayById(id: string): Observable<Outlay> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Outlay>(url);
   }
 
-  // getProductById(id: string): Observable<Product> {
-  //   const url = `${this.baseUrl}/${id}`;
-  //   return this.http.get<Product>(url);
-  // }
+  createOutlay(outlay: OutlayRequest): Error | undefined {
+    const error = {
+      title: '',
+      price: '',
+      pet: '',
+    };
+
+    const outlayReq = {
+      title: outlay.title
+        ? outlay.title.trimStart().trimEnd()
+        : (error.title = 'titulo invalido'),
+      price: outlay.price
+        ? outlay.price * 100
+        : (error.price = 'preço invalido'),
+      pet_id:
+        typeof outlay.pet === 'string'
+          ? (error.pet = 'Selecione um pet')
+          : outlay.pet.id,
+    };
+
+    if (error.title !== '') {
+      return new Error(error.title);
+    }
+    if (error.price !== '') {
+      return new Error(error.price);
+    }
+    if (error.pet !== '') {
+      return new Error(error.pet);
+    }
+
+    this.http.post<Outlay>(this.baseUrl, outlayReq).subscribe();
+    return;
+  }
 
   // updateProduct(product: Product): Observable<Product> {
   //   const url = `${this.baseUrl}/${product.id}`;
   //   return this.http.put<Product>(url, product);
   // }
 
-  // deleteProduct(id: string) {
-  //   const url = `${this.baseUrl}/${id}`;
-  //   return this.http.delete<Product>(url);
-  // }
+  deleteOutlay(id: string) {
+    const url = `${this.baseUrl}/${id}`;
+    this.http.delete<Outlay>(url).subscribe();
+  }
 }

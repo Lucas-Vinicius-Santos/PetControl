@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -16,6 +17,10 @@ import { UpdateCostComponent } from './views/update-cost/update-cost.component';
 import { PetHistoryComponent } from './views/pet-history/pet-history.component';
 import { DeletePetComponent } from './views/delete-pet/delete-pet.component';
 import { UpdatePetComponent } from './views/update-pet/update-pet.component';
+
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -37,8 +42,15 @@ import { UpdatePetComponent } from './views/update-pet/update-pet.component';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
+    NgxMaskModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt',
+    },
+  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

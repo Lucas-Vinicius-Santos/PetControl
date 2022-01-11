@@ -19,12 +19,16 @@ const routes: Routes = [
   { path: 'cost-history', component: CostHistoryComponent },
   { path: 'new-cost', component: CreateCostComponent },
   { path: 'update-cost/:id', component: UpdateCostComponent },
+  { path: 'update-cost', redirectTo: 'cost-history' },
   { path: 'delete-cost/:id', component: DeleteCostComponent },
+  { path: 'delete-cost', redirectTo: 'cost-history' },
 
   { path: 'pet-history', component: PetHistoryComponent },
   { path: 'new-pet', component: CreatePetComponent },
   { path: 'update-pet/:id', component: UpdatePetComponent },
+  { path: 'update-pet', redirectTo: 'pet-history' },
   { path: 'delete-pet/:id', component: DeletePetComponent },
+  { path: 'delete-pet', redirectTo: 'pet-history' },
 ];
 
 @NgModule({

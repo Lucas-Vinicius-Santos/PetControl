@@ -45,10 +45,21 @@ export class CreateCostComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.outlay.pet === 'default') {
-      return alert('Selecione um pet');
+    const result = this.outlayService.createOutlay({
+      title: this.outlay.title,
+      price: Number(this.outlay.price),
+      pet: this.outlay.pet,
+    });
+
+    if (result instanceof Error) {
+      alert(result);
+      return;
     }
 
-    this.outlayService.createOutlay(this.outlay);
+    this.outlay = {
+      title: '',
+      price: null,
+      pet: 'default',
+    };
   }
 }

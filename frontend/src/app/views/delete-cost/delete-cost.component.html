@@ -1,1 +1,59 @@
-<p>delete-cost works!</p>
+<div class="container">
+  <div class="content">
+    <div class="background"></div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="inputWrapper">
+        <div class="inputContent">
+          <div class="inputs">
+            <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
+            <input
+              name="title"
+              [(ngModel)]="outlay.title"
+              class="input"
+              type="text"
+              disabled
+            />
+          </div>
+
+          <div class="inputs">
+            <fa-icon class="inputIcons" [icon]="faDollarSign"></fa-icon>
+            <input
+              name="price"
+              value="{{ outlay.price / 100 | currency: 'BRL' }}"
+              class="input"
+              type="text"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="inputContent">
+          <div class="inputs">
+            <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
+            <input
+              name="outlay.pet.name"
+              [(ngModel)]="outlay.pet.name"
+              class="input"
+              type="text"
+              disabled
+            />
+          </div>
+
+          <div class="inputs">
+            <fa-icon class="inputIcons" [icon]="faPaw"></fa-icon>
+            <input
+              name="outlay.breed"
+              [(ngModel)]="outlay.pet.breed"
+              class="input"
+              type="text"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="buttonContent">
+        <button (click)="cancel()" type="button">Cancelar</button>
+        <button [disabled]="isDisabled" type="submit">Excluir</button>
+      </div>
+    </form>
+  </div>
+</div>

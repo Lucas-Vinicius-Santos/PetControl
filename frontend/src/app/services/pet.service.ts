@@ -35,7 +35,7 @@ export class PetService {
       return new Error(error.name);
     }
     if (error.breed !== '') {
-      return new Error(error.name);
+      return new Error(error.breed);
     }
 
     this.http.post<Pet>(this.baseUrl, petReq).subscribe();
