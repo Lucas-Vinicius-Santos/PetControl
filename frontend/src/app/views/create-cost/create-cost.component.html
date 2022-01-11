@@ -7,6 +7,8 @@
           <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
           <input
             name="title"
+            mask="S* A*"
+            maxlength="24"
             [(ngModel)]="outlay.title"
             class="input"
             type="text"

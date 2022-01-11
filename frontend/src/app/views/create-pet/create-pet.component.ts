@@ -25,8 +25,6 @@ export class CreatePetComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    const result = this.petService.createPet(this.pet);
-
-    alert(result);
+    this.petService.createPet(this.pet);
   }
 }

@@ -26,7 +26,8 @@ header {
           text-decoration: none;
           transition: all 0.2s;
 
-          &:hover {
+          &:hover,
+          &.active {
             text-decoration: underline;
             color: var(--blue-600);
           }

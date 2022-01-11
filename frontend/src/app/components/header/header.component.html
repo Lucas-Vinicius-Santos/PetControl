@@ -1,10 +1,26 @@
 <header>
   <div>
-    <img src="../../../assets/logo.svg" alt="PetControl" />
     <nav>
       <ul>
-        <li><a routerLink="new-cost">Registrar novo</a></li>
-        <li><a routerLink="cost-history">Histórico</a></li>
+        <li>
+          <a routerLinkActive="active" routerLink="new-pet">Cadastrar pet</a>
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="pet-history">Mostrar pets</a>
+        </li>
+      </ul>
+    </nav>
+    <a routerLink="">
+      <img src="../../../assets/logo.svg" alt="PetControl" />
+    </a>
+    <nav>
+      <ul>
+        <li>
+          <a routerLinkActive="active" routerLink="new-cost">Registrar gasto</a>
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="cost-history">Histórico</a>
+        </li>
       </ul>
     </nav>
   </div>

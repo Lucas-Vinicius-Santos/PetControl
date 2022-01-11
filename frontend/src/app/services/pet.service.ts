@@ -16,6 +16,11 @@ export class PetService {
     return this.http.get<Pet[]>(this.baseUrl);
   }
 
+  getPetById(id: string): Observable<Pet> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Pet>(url);
+  }
+
   createPet(pet: Pet): Pet | Error {
     let error = {
       name: '',
@@ -43,18 +48,13 @@ export class PetService {
     return petReq;
   }
 
-  // getProductById(id: string): Observable<Product> {
-  //   const url = `${this.baseUrl}/${id}`;
-  //   return this.http.get<Product>(url);
+  // updatePet(Pet: Pet): Observable<Pet> {
+  //   const url = `${this.baseUrl}/${Pet.id}`;
+  //   return this.http.put<Pet>(url, Pet);
   // }
 
-  // updateProduct(product: Product): Observable<Product> {
-  //   const url = `${this.baseUrl}/${product.id}`;
-  //   return this.http.put<Product>(url, product);
-  // }
-
-  // deleteProduct(id: string) {
-  //   const url = `${this.baseUrl}/${id}`;
-  //   return this.http.delete<Product>(url);
-  // }
+  deletePet(id: string) {
+    const url = `${this.baseUrl}/${id}`;
+    this.http.delete<Pet>(url).subscribe();
+  }
 }
