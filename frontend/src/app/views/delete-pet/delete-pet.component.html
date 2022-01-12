@@ -3,28 +3,26 @@
     <div class="background"></div>
     <form (ngSubmit)="onSubmit()">
       <div class="inputWrapper">
-        <div class="inputContent">
-          <div class="inputs">
-            <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
-            <input
-              name="pet.name"
-              [(ngModel)]="pet.name"
-              class="input"
-              type="text"
-              disabled
-            />
-          </div>
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
+          <input
+            name="pet.name"
+            [(ngModel)]="pet.name"
+            class="input"
+            type="text"
+            disabled
+          />
+        </div>
 
-          <div class="inputs">
-            <fa-icon class="inputIcons" [icon]="faPaw"></fa-icon>
-            <input
-              name="breed"
-              [(ngModel)]="pet.breed"
-              class="input"
-              type="text"
-              disabled
-            />
-          </div>
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faPaw"></fa-icon>
+          <input
+            name="breed"
+            [(ngModel)]="pet.breed"
+            class="input"
+            type="text"
+            disabled
+          />
         </div>
       </div>
       <div class="buttonContent">

@@ -59,18 +59,18 @@
       }
     }
   }
-
   @media (max-width: 720px) {
     padding: 0 1rem;
-
+  }
+  @media (max-width: 860px) {
     table {
       text-align: center;
       th {
-        padding: 1rem 1rem;
+        padding: 1rem 0rem;
       }
       tr {
         td {
-          padding: 1rem 1rem;
+          padding: 1rem 0rem;
         }
       }
     }

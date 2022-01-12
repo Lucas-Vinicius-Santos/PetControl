@@ -24,6 +24,10 @@
     .highlight {
       font-weight: bold;
       color: var(--orange-500);
+
+      &.cursorP {
+        cursor: pointer;
+      }
     }
 
     h1 {
