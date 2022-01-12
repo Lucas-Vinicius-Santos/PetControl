@@ -1,1 +1,36 @@
-<p>update-pet works!</p>
+<div class="container">
+  <div class="content">
+    <div class="background"></div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="inputWrapper">
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faPencilAlt"></fa-icon>
+          <input
+            name="name"
+            maxlength="24"
+            [(ngModel)]="pet.name"
+            class="input"
+            type="text"
+            placeholder="Qual o nome do pet?"
+          />
+        </div>
+
+        <div class="inputs">
+          <fa-icon class="inputIcons" [icon]="faPaw"></fa-icon>
+          <input
+            name="breed"
+            maxlength="24"
+            [(ngModel)]="pet.breed"
+            class="input"
+            type="text"
+            placeholder="Qual a espécie dele?"
+          />
+        </div>
+      </div>
+      <div class="buttonContent">
+        <button (click)="cancel()" type="button">Cancelar</button>
+        <button [disabled]="isDisabled" type="submit">Atualizar</button>
+      </div>
+    </form>
+  </div>
+</div>

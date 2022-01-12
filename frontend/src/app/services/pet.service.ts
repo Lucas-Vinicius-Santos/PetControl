@@ -48,10 +48,10 @@ export class PetService {
     return petReq;
   }
 
-  // updatePet(Pet: Pet): Observable<Pet> {
-  //   const url = `${this.baseUrl}/${Pet.id}`;
-  //   return this.http.put<Pet>(url, Pet);
-  // }
+  updatePet(pet: Pet) {
+    const url = `${this.baseUrl}/${pet.id}`;
+    this.http.put<Pet>(url, pet).subscribe();
+  }
 
   deletePet(id: string) {
     const url = `${this.baseUrl}/${id}`;
