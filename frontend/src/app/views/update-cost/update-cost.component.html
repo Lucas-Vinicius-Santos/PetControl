@@ -17,10 +17,17 @@
 
         <div class="inputs">
           <fa-icon class="inputIcons" [icon]="faPaw"></fa-icon>
-          <select class="inputs select" name="pet" value="outlay.pet">
-            <option *ngFor="let pet of pets" [ngValue]="pet">
-              {{ pet.name }}
-            </option>
+          <select
+            class="inputs select"
+            name="pet"
+            [(ngModel)]="outlay.pet"
+          >
+          <option *ngFor="let pet of pets" [ngValue]="pet">
+            {{ pet.name }}
+          </option>
+          <option [ngValue]="outlay.pet" > 
+            {{outlay.pet.name}}
+          </option>
           </select>
         </div>
 

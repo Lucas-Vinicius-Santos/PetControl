@@ -4,10 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
+
 import { Outlay } from 'src/app/models/outlay.model';
 import { Pet } from 'src/app/models/pet.model';
+
 import { OutlayService } from 'src/app/services/outlay.service';
 import { PetService } from 'src/app/services/pet.service';
+
+import compareByName from 'src/utils/sortPetByName';
 
 @Component({
   selector: 'app-update-cost',
@@ -22,7 +26,6 @@ export class UpdateCostComponent implements OnInit {
   isDisabled = false;
 
   pets: Pet[] = [];
-  options: string[] = [];
   outlay: Outlay = {
     id: 0,
     title: '',
@@ -43,16 +46,15 @@ export class UpdateCostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.petService.getAllPets().subscribe((pets) => {
-      this.pets = pets;
-      this.options = this.getAllPetName();
-    });
     this.getOutlay();
+
+    this.petService.getAllPets().subscribe((pets) => {
+      this.pets = pets
+        .filter((pet) => pet.name !== this.outlay.pet.name)
+        .sort(compareByName);
+    });
   }
 
-  getAllPetName() {
-    return this.pets.map((pet) => pet.name);
-  }
   getOutlay() {
     let id: string | null;
     id = this.route.snapshot.paramMap.get('id');
@@ -61,7 +63,6 @@ export class UpdateCostComponent implements OnInit {
       this.router.navigate(['/cost-history']);
       return;
     }
-
     this.outlayService.getOutlayById(id).subscribe((outlay) => {
       this.outlay = outlay;
       this.outlay.price = outlay.price / 100;
@@ -74,7 +75,7 @@ export class UpdateCostComponent implements OnInit {
       return;
     }
 
-    this.outlayService.updateOutlay({
+    console.log({
       id: this.outlay.id,
 
       title: this.outlay.title,
@@ -83,9 +84,18 @@ export class UpdateCostComponent implements OnInit {
       pet: this.outlay.pet,
     });
 
+    // this.outlayService.updateOutlay({
+    //   id: this.outlay.id,
+
+    //   title: this.outlay.title,
+    //   price: this.outlay.price * 100,
+    //   pet_id: this.outlay.pet.id,
+    //   pet: this.outlay.pet,
+    // });
+
     this.isDisabled = true;
     setTimeout(() => {
-      this.router.navigateByUrl('/cost-history');
+      // this.router.navigateByUrl('/cost-history');
     }, 1000);
   }
 

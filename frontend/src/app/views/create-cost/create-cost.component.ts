@@ -9,6 +9,8 @@ import { Pet } from 'src/app/models/pet.model';
 import { PetService } from 'src/app/services/pet.service';
 import { OutlayService } from 'src/app/services/outlay.service';
 
+import compareByName from 'src/utils/sortPetByName';
+
 @Component({
   selector: 'app-create-cost',
   templateUrl: './create-cost.component.html',
@@ -20,7 +22,6 @@ export class CreateCostComponent implements OnInit {
   faDollarSign = faDollarSign;
 
   pets: Pet[] = [];
-  options: string[] = [];
 
   outlay: OutlayRequest = {
     title: '',
@@ -35,13 +36,8 @@ export class CreateCostComponent implements OnInit {
 
   ngOnInit(): void {
     this.petService.getAllPets().subscribe((pets) => {
-      this.pets = pets;
-      this.options = this.getAllPetName();
+      this.pets = pets.sort(compareByName);
     });
-  }
-
-  getAllPetName() {
-    return this.pets.map((pet) => pet.name);
   }
 
   onSubmit() {
