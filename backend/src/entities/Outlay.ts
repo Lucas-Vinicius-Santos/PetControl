@@ -25,7 +25,10 @@ export class Outlay {
   @Column()
   pet_id: number;
 
-  @ManyToOne((type) => Pet)
+  @ManyToOne((type) => Pet, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   @JoinColumn({ name: "pet_id" })
   pet: Pet;
 }

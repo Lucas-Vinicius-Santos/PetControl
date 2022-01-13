@@ -56,7 +56,7 @@ export class CostChartComponent implements OnInit {
           },
         },
       });
-    }, 1000);
+    }, 500);
   }
 
   getData(): dataProps {

@@ -1,16 +1,22 @@
 .container {
   padding: 0 2rem;
-  
+
   .chart {
     margin: -2rem auto;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.4);
     max-width: 1120px;
     padding: 2rem;
     height: 600px;
+    border-radius: 14px;
 
     background: var(--blue-400);
-    
-    border-radius: 14px;
-    font-size: 1.2rem;
+  }
+
+  @media (max-width: 720px) {
+    padding: 0 1rem;
+
+    .chart {
+      padding: 1rem;
+    }
   }
 }
