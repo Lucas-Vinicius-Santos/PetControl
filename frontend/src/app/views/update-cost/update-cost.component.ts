@@ -75,7 +75,8 @@ export class UpdateCostComponent implements OnInit {
       return;
     }
 
-    console.log({
+
+    this.outlayService.updateOutlay({
       id: this.outlay.id,
 
       title: this.outlay.title,
@@ -84,18 +85,9 @@ export class UpdateCostComponent implements OnInit {
       pet: this.outlay.pet,
     });
 
-    // this.outlayService.updateOutlay({
-    //   id: this.outlay.id,
-
-    //   title: this.outlay.title,
-    //   price: this.outlay.price * 100,
-    //   pet_id: this.outlay.pet.id,
-    //   pet: this.outlay.pet,
-    // });
-
     this.isDisabled = true;
     setTimeout(() => {
-      // this.router.navigateByUrl('/cost-history');
+      this.router.navigateByUrl('/cost-history');
     }, 1000);
   }
 

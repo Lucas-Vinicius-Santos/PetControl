@@ -6,6 +6,9 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Pet } from 'src/app/models/pet.model';
 import { PetService } from 'src/app/services/pet.service';
 
+import compareByName from 'src/utils/sortPetByName';
+
+
 @Component({
   selector: 'app-pet-history',
   templateUrl: './pet-history.component.html',
@@ -21,7 +24,7 @@ export class PetHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.petService.getAllPets().subscribe((pets) => {
-      this.pets = pets;
+      this.pets = pets.sort(compareByName);
     });
   }
 }

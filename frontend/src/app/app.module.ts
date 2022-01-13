@@ -20,6 +20,7 @@ import { UpdatePetComponent } from './views/update-pet/update-pet.component';
 
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { CostChartComponent } from './components/cost-chart/cost-chart.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -35,6 +36,7 @@ registerLocaleData(ptBr);
     PetHistoryComponent,
     DeletePetComponent,
     UpdatePetComponent,
+    CostChartComponent,
   ],
   imports: [
     AppRoutingModule,

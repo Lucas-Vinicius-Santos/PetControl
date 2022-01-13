@@ -28,7 +28,7 @@ export class CostHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.outlayService.getAllOutlays().subscribe((outlays) => {
-      this.outlays = outlays;
+      this.outlays = outlays.reverse();
     });
   }
 }

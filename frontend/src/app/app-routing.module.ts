@@ -12,6 +12,7 @@ import { PetHistoryComponent } from './views/pet-history/pet-history.component';
 import { CreatePetComponent } from './views/create-pet/create-pet.component';
 import { UpdatePetComponent } from './views/update-pet/update-pet.component';
 import { DeletePetComponent } from './views/delete-pet/delete-pet.component';
+import { CostChartComponent } from './components/cost-chart/cost-chart.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path: 'update-pet', redirectTo: 'pet-history' },
   { path: 'delete-pet/:id', component: DeletePetComponent },
   { path: 'delete-pet', redirectTo: 'pet-history' },
+
+  { path: 'chart', component: CostChartComponent },
 ];
 
 @NgModule({
