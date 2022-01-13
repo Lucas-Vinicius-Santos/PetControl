@@ -9,16 +9,17 @@ import { OutlayService } from 'src/app/services/outlay.service';
 })
 export class CostChartComponent implements OnInit {
   @ViewChild('chart', { static: true }) chartElement!: ElementRef;
-  name: string[] = [];
-  prices: number[] = [];
+
+  data: dataProps = {
+    names: [],
+    prices: [],
+  };
 
   constructor(private outlayService: OutlayService) {}
 
   ngOnInit(): void {
     Chart.register(...registerables);
-
-    this.name = this.getAllPetName();
-    this.prices = this.getAllPrice();
+    this.data = this.getData();
 
     setTimeout(() => {
       Chart.defaults.font.size = 24;
@@ -26,10 +27,10 @@ export class CostChartComponent implements OnInit {
       new Chart(this.chartElement.nativeElement, {
         type: 'bar',
         data: {
-          labels: this.name,
+          labels: this.data.names,
           datasets: [
             {
-              data: this.prices,
+              data: this.data.prices,
               backgroundColor: ['#005f99'],
             },
           ],
@@ -58,29 +59,40 @@ export class CostChartComponent implements OnInit {
     }, 1000);
   }
 
-  getAllPetName(): string[] {
-    let outlayPet: string[] = [];
+  getData(): dataProps {
+    let data: dataProps = {
+      names: [],
+      prices: [],
+    };
+    this.outlayService.getAllOutlays().subscribe((outlays) => {
+      outlays.forEach((outlay) => {
+        if (!data.names.includes(outlay.pet.name)) {
+          data.names.push(outlay.pet.name);
+        }
+      });
+    });
 
     this.outlayService.getAllOutlays().subscribe((outlays) => {
-      outlays.map((outlay) => outlayPet.push(outlay.pet.name));
+      data.names = data.names.sort();
+
+      outlays.forEach((outlay) => {
+        let index = data.names.indexOf(outlay.pet.name);
+        if (!data.prices[index]) data.prices[index] = 0;
+
+        data.prices[index] += outlay.price / 100;
+        console.log('> data prices:', data.prices);
+      });
     });
 
     setTimeout(() => {
-      console.log(outlayPet);
+      console.log('debugging');
     }, 400);
 
-    return outlayPet;
+    return data;
   }
-  getAllPrice(): number[] {
-    let outlayPrices: number[] = [];
-    this.outlayService.getAllOutlays().subscribe((outlays) => {
-      outlays.map((outlay) => outlayPrices.push(outlay.price / 100));
-    });
+}
 
-    setTimeout(() => {
-      console.log(outlayPrices);
-    }, 400);
-
-    return outlayPrices;
-  }
+interface dataProps {
+  names: string[];
+  prices: number[];
 }
