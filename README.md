@@ -14,10 +14,10 @@
 
 ### Projeto desafio da Contabilus onde o frontend da aplicação deve ser implementado em Angular, backend (API) em node.js e usando um baco de dados relacional para a persistência dos dados 
 <p align="center">
-  <img src="./gitImg/landing.jpeg" width="800px">
-  <p>
-    <img src="./gitImg/pet.gif">
-    <img src="./gitImg/outlay.gif">
+  <img src="./gitImg/landing.jpeg" width="100%">
+  <p align="center">
+    <img src="./gitImg/pet.gif" width="49.5%">
+    <img src="./gitImg/outlay.gif" width="49.5%"">
   </p>
 </p>
 
